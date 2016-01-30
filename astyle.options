@@ -1,0 +1,24 @@
+#  Beautifies our code so everything will look the same
+#  http://astyle.sourceforge.net/astyle.html
+#  !!! This works recursively and will formate all documents
+#  !!! Make sure to run it only in the src file
+#  usage:
+#  install astyle http://astyle.sourceforge.net/
+#  cd Embedded/F15_apple/<current_task>/src
+#  astyle --options="../../astyle.options" "filePath"
+#
+
+suffix=none
+
+#
+--style=java
+#
+indent=spaces=2
+#
+--add-brackets
+#
+--max-code-length=80
+#
+--break-closing-brackets
+#
+--delete-empty-lines

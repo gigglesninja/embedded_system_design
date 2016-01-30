@@ -1,0 +1,9 @@
+﻿Team APPLE Code Instructions
+
+To compile:
+	Place the f15_apple repo in the same directory as the pic24 library.
+	At top level of repo run scons. 
+
+	Change MY_ID to your ID
+
+	********************************************

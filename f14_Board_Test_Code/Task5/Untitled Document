@@ -1,0 +1,29 @@
+#include "../../../pic24lib_all/esos/include/esos.h"
+#include "../../include/esos_f15_ui.h"
+#include "../../include/esos_pic24_sensor.h"
+#include "../../include/esos_pic24_lcd.h"
+
+uint8_t CustomChar0[8] = {16, 16, 16, 16, 16, 16, 16, 16};
+
+ESOS_USER_TASK(TEST)  {
+  ESOS_TASK_BEGIN();
+  esos_lcd_setCustomChar(0, CustomChar0);
+  while (TRUE) {
+    LED1 = !LED1;
+    esos_lcd_setCursor(ROW_ONE, 1);
+    ESOS_TASK_WAIT_LCD_WRITE_DATA(0x00);
+    ESOS_TASK_WAIT_TICKS(200);
+  } // endof while(TRUE)
+  ESOS_TASK_END();
+} // end upper_case()
+
+void user_init(void) {
+  config_esos_f15ui();		// setup UI for heartbeat
+  f15ui_flashLED3(500);
+  esos_lcd_configDisplay(); // config LCD hardware
+  esos_lcd_init();			// initilize the LCD
+  // user_init() should register at least one user task
+  esos_RegisterTask(TEST);
+
+
+} // end user_init()
